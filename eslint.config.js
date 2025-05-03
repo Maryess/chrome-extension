@@ -34,6 +34,8 @@ export default [
             { pattern: 'features/**', group: 'internal' },
             { pattern: 'entities/**', group: 'internal' },
             { pattern: 'shared/**', group: 'internal' },
+            { pattern: 'components/**', group: 'internal' },
+            { pattern: 'ui/**', group: 'internal' },
             { pattern: '**/*.css', group: 'index' },
           ],
           alphabetize: { order: 'asc', caseInsensitive: true },

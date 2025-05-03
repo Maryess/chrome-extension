@@ -1,1 +1,2 @@
-export {default as HopePage} from './home'
+export {default as Home} from './Home'
+export {default as Contacts} from './Contacts'

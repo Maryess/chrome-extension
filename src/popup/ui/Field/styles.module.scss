@@ -1,0 +1,24 @@
+.fileInputWrapper{
+    position: relative;
+    display: inline-block;
+    .input{
+        background-color: transparent;
+        &[type="file"]{
+            opacity: 0;
+            z-index: -1;
+        }
+    }
+    .fileInputLabel {
+        margin: 0 auto;
+        padding: 8px 16px;
+        background: #007bff;
+        color: white;
+        border-radius: 7px;
+        cursor: pointer;
+        
+        &:hover {
+        background: #0056b3;
+        transition: background ease-in 0.2s;
+        }
+    }
+}

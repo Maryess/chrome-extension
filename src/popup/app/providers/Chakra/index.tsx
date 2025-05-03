@@ -1,11 +1,11 @@
 import { ChakraProvider } from '@chakra-ui/react';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import system from './system';
 
 type Props = {
   children: ReactNode;
 };
 
-export const Provider: FC<Props> = ({ children }) => {
+export default({ children }:Props) => {
   return <ChakraProvider value={system}>{children}</ChakraProvider>;
 };
