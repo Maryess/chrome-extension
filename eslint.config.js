@@ -1,22 +1,27 @@
 import js from '@eslint/js';
-import { defineConfig } from 'eslint/config';
-import prettierConfig from 'eslint-config-prettier';
-import imports from 'eslint-plugin-import';
-import prettier from 'eslint-plugin-prettier';
-import pluginReact from 'eslint-plugin-react';
 import globals from 'globals';
-import tseslint from 'typescript-eslint';
+import pluginReact from 'eslint-plugin-react';
 
-export default defineConfig([
-  { files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'], plugins: { js }, extends: ['js/recommended'] },
-  { files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'], languageOptions: { globals: globals.browser } },
-  tseslint.configs.recommended,
-  pluginReact.configs.flat.recommended,
+export default [
+  js.configs.recommended,
   {
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node
+      },
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true
+        }
+      }
+    },
+    plugins: {
+      react: pluginReact
+    },
     rules: {
-      ...prettierConfig.rules,
       'react/react-in-jsx-scope': 'off',
-      'prettier/prettier': 'error',
+      'react/jsx-uses-react': 'off',
       'import/order': [
         'error',
         {
@@ -32,12 +37,9 @@ export default defineConfig([
             { pattern: '**/*.css', group: 'index' },
           ],
           alphabetize: { order: 'asc', caseInsensitive: true },
-        },
+          'newlines-between': 'always'
+        }
       ],
-    },
-    plugins: {
-      import: imports,
-      prettier,
-    },
-  },
-]);
+    }
+  }
+];

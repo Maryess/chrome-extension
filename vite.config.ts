@@ -7,7 +7,10 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 export default defineConfig({
   plugins: [
     react(),
-    eslint(),
+    eslint({
+      include: ['src/**/*.ts', 'src/**/*.tsx'],
+      cache: false
+    }),
     tsconfigPaths(),
     viteStaticCopy({
       targets: [

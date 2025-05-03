@@ -1,8 +1,10 @@
-import { Button, Input, Textarea } from '@chakra-ui/react';
+import { Button, Input } from '@chakra-ui/react';
 import { useLayoutEffect, useState } from 'react';
 import { ChakraProvider } from './providers';
+import Home from 'pages/home';
 
-export const App = () => {
+
+const App = () => {
   const [url, setUrl] = useState('');
   const [mock, setMock] = useState('');
 
@@ -32,12 +34,11 @@ export const App = () => {
       <Input
         value={url}
         onChange={(e) => setUrl(e.target.value)}
-        type={'text'}
-        placeholder={'URL'}
+        type={'file'}
+        placeholder={'Upload file'}
       />
       <br />
-      <Textarea value={mock} onChange={(e) => setMock(e.target.value)} placeholder={'URL'} />
-      <br />
+      <Home/>
       <Button onClick={save} variant={'solid'}>
         Save
       </Button>
@@ -45,3 +46,5 @@ export const App = () => {
     </ChakraProvider>
   );
 };
+
+export default App;
