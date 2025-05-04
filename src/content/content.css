@@ -1,0 +1,3 @@
+.container-visible {
+    transform: translateX(-400px); /* Выдвигается на экран */
+  }

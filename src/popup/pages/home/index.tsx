@@ -16,6 +16,7 @@ export default () => {
     localStorage.removeItem('selected image')
   }
 
+ 
   useEffect(()=>{
     const getMousePosition = (e:MouseEvent) => {
       setMousePosition({

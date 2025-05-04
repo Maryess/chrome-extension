@@ -1,4 +1,5 @@
 import react from '@vitejs/plugin-react';
+import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import eslint from 'vite-plugin-eslint';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
@@ -15,8 +16,8 @@ export default defineConfig({
     viteStaticCopy({
       targets: [
         {
-          src: 'src/manifest.json',
-          dest: '.',
+          src: resolve(__dirname, 'manifest.json'),
+          dest: './',
         },
       ],
     }),
@@ -25,8 +26,9 @@ export default defineConfig({
     outDir: 'build',
     rollupOptions: {
       input: {
-        main: './index.html',
-        background: './src/background.ts',
+        main: resolve(__dirname,'src/popup/index.html'),
+        background: resolve(__dirname,'src/background.ts'),
+        content: resolve(__dirname, 'src/content/content.ts')
       },
       output: {
         entryFileNames: '[name].js',

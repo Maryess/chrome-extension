@@ -4,22 +4,29 @@
   "version": "1.0.0",
   "description": "A simple React app as a Chrome extension",
   "action": {
-    "default_icon": "/icons/logo.png"
+    "default_icon": "icons/logo.png"
   },
   "background": {
     "service_worker": "background.js",
     "type": "module"
   },
   "permissions": [
+    "tabs",
     "declarativeNetRequest",
     "storage",
-    "windows"
+    "windows",
+    "scripting"
   ],
   "host_permissions": [
     "<all_urls>"
   ],
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["content.js"],
+    "run_at": "document_end" 
+    }],
   "web_accessible_resources": [{
-    "resources": ["index.html", "/icons/*"],
+    "resources": ["index.html", "icons/*"],
     "matches": ["<all_urls>"]
   }]
 }

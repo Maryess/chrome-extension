@@ -1,19 +1,28 @@
-chrome.storage.onChanged.addListener((changes, namespace) => {
-  console.log('changes', changes);
-  console.log('namespace', namespace);
-});
+let popupWindowId: number | undefined;
 
-chrome.storage.local.get(null, () => {
-  console.log('chrome.storage.local.get');
-});
+chrome.action.onClicked.addListener(async () => {
+  // Если окно уже существует - фокусируем его
+  if (popupWindowId) {
+    try {
+      await chrome.windows.update(popupWindowId, { focused: true });
+      return;
+    } catch {
+      popupWindowId = undefined;
+    }
+  }
 
-chrome.action.onClicked.addListener(() => {
-  chrome.windows.create({
-    url: chrome.runtime.getURL('index.html'),  // Главная страница расширения
-    type: 'normal',
-    width: 400,
+  // Создаем новое окно
+  const window = await chrome.windows.create({
+    url: chrome.runtime.getURL('index.html'),
+    type: 'panel', // Ключевой параметр!
+    width: 350,
     height: 600,
-    left: 100,  // Позиция окна
+    left: 100,
     top: 100
   });
+
+  popupWindowId = window.id;
 });
+
+console.log('Путь:', chrome.runtime.getURL('index.html'));
+console.log('Content script loaded on:', window.location.href);
