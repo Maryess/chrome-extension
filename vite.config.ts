@@ -32,5 +32,6 @@ export default defineConfig({
         entryFileNames: '[name].js',
       },
     },
+    assetsDir: 'assets'
   },
 });
