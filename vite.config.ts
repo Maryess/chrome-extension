@@ -10,7 +10,7 @@ export default defineConfig({
   publicDir: resolve(__dirname, 'public'),
   server: {
     port: 5173,
-    open: 'popup/popup.html'
+    open: false
   },
   plugins: [
     react(),
@@ -44,11 +44,11 @@ export default defineConfig({
     outDir: '../build',
     rollupOptions: {
       input: {
-        popup: resolve(__dirname, 'src/popup/popup.html'),
+        content: resolve(__dirname, 'src/content.tsx'),
         background: resolve(__dirname, 'src/background.ts')
       },
       output: {
-        entryFileNames: 'popup/[name].js',
+        entryFileNames: '[name].js',
         assetFileNames: 'assets/[name].[ext]'
       }
     },

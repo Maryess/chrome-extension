@@ -1,13 +1,8 @@
-let popupWindowId: number | undefined;
+chrome.action.onClicked.addListener((tab) => {
+  if (!tab.id || !tab.url?.startsWith('http')) return;
 
-  // Создаем новое окно
-chrome.windows.create({
-    url: chrome.runtime.getURL('/src/popup/index.html'),
-    type: 'panel', 
-    width: 350,
-    height: 600,
-    left: 100,
-    top: 100
+  chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    files: ['content.js']
+  });
 });
-
-console.log('Путь:', chrome.runtime.getURL('index.html'));
