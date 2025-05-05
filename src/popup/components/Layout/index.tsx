@@ -1,20 +1,23 @@
-import { Link } from "@chakra-ui/react"
+
 import { ReactNode } from "react"
 import styles from './styles.module.scss'
+import { Link } from "react-router-dom"
 
 export default ({children}:{children:ReactNode}) =>{
     return(
         <div>
             <header className={styles.layout}>
             <div className={styles.logo}>
-                <span>Perfect site</span>  
+                <span>Perfect Site</span>  
             </div>
             <nav className={styles.nav}>
-                <Link href="/">home</Link>
-                <Link href="/contacts">contacts</Link>
+                <Link to="/">home</Link>
+                <Link to="/contacts">contacts</Link>
             </nav>
         </header>
+        <div className={styles.children}>
         {children}
+        </div>
         </div>
     )
 }

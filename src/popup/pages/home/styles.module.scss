@@ -1,8 +1,14 @@
 .home{
     width:100%;
     height: 100%;
-    input{
-        position: relative;
+    &__upload{
+        margin: 0 auto;
+        border: 2px solid;
+        border-color: gray;
+        height: 15rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     image{

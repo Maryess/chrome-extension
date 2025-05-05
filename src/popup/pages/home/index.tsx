@@ -1,5 +1,5 @@
 import { Button, Image } from "@chakra-ui/react";
-import { useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import styles from './styles.module.scss'
 import {Field} from "ui/index";
 
@@ -32,11 +32,8 @@ export default () => {
     };
   },[])
 
-  const uploadImage = () => {
-    const input = document.createElement('input')
-    input.type = 'file'
-    input.onchange = (e:Event) => {
-      const file = (e.target as HTMLInputElement).files?.[0];
+  const uploadImage = (e:ChangeEvent<HTMLInputElement>) => {
+      const file = e.target.files?.[0];
       if (file) {
         setFile(file);
         const reader = new FileReader();
@@ -66,8 +63,6 @@ export default () => {
         };
         reader.readAsDataURL(file);
       }
-    }
-    input.click()
   }
 
   const checkImageUrl = () => {
@@ -80,13 +75,16 @@ export default () => {
   }
     return (
       <div className={styles.home}>
-            <Button
-              onClick={uploadImage}
-              >Выбрать файл
-            </Button>
+        <div className={styles.home__upload}>
+            <Field
+              onChange={uploadImage}
+              type="file"
+              placeholder="Choose file"
+              />
+        </div>
               <br />
-            {imageValue && 
-            <Image src={`${imageValue}`} width={100} height={100} alt={file?.name} />}
+            {imageValue && localStorage.getItem('selected image')?
+            <Image src={`${imageValue}`} width={100} height={100} alt={file?.name}/>:null}
               <br/>
             <Button onClick={checkImageUrl} variant={'solid'}>
                 Get image url

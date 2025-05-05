@@ -20,8 +20,8 @@ export default({onChange,placeholder, type, label,value}:Props)=>{
                 value={value}
                 />
                 <label htmlFor="fileInput" className={styles.fileInputLabel}>
-                {label || 'Choose file'}
-            </label>
+                    {label || 'Choose file'}
+                </label>
         </div>
     )
 }

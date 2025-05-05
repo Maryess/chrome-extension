@@ -1,16 +1,17 @@
-import { Layout } from "components/index"
-import { ChakraProvider, RouterProvider } from ".."
-import { ReactNode } from "react"
+import { Layout } from "components/index";
+import { ReactNode } from "react";
+import { MemoryRouter } from "react-router-dom";
+import { Router } from "app/routes/Router";
+import { ChakraProvider } from "..";
 
-type Props = {
-}
-
-export default () => {
-    return (
-       <ChakraProvider>
-          <Layout>
-            <RouterProvider/>
-          </Layout>
-       </ChakraProvider> 
-    )
+export default function App() {
+  return (
+    <ChakraProvider>
+      <MemoryRouter initialEntries={['/']}>
+        <Layout>
+          <Router />
+        </Layout>
+      </MemoryRouter>
+    </ChakraProvider>
+  );
 }

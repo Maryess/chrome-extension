@@ -27,6 +27,7 @@ export default [
         {
           groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
           pathGroups: [
+            { pattern: 'src/**', group: 'internal' },
             { pattern: 'app/**', group: 'internal' },
             { pattern: 'store/**', group: 'internal' },
             { pattern: 'pages/**', group: 'internal' },

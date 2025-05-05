@@ -1,24 +1,65 @@
-.fileInputWrapper{
+.fileInputWrapper {
     position: relative;
-    display: inline-block;
-    .input{
-        background-color: transparent;
-        &[type="file"]{
-            opacity: 0;
-            z-index: -1;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px; // Ограничиваем максимальную ширину
+    margin: 0 auto;
+  
+    // Скрываем нативный input, но оставляем функциональность
+    .input[type="file"] {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      left: 0;
+      top: 0;
+      cursor: pointer;
+      z-index: 2; // Важно для перекрытия
     }
+  
+    // Кастомная кнопка
     .fileInputLabel {
-        margin: 0 auto;
-        padding: 8px 16px;
-        background: #007bff;
-        color: white;
-        border-radius: 7px;
-        cursor: pointer;
+      padding: 12px 24px;
+      background: #007bff;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-block;
+      width: auto;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  
+      &:hover {
+        background: #0069d9;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      }
+  
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  
+    // Блок для отображения имени файла
+    .fileName {
+      margin-left: 15px;
+      color: #555;
+      font-size: 14px;
+      flex-grow: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    &.has-file {
+      .fileInputLabel {
+        background: #28a745;
         
         &:hover {
-        background: #0056b3;
-        transition: background ease-in 0.2s;
+          background: #218838;
         }
+      }
     }
-}
+  }
