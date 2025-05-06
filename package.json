@@ -6,8 +6,9 @@
   "main": "src/main.tsx",
   "scripts": {
     "dev": "npx vite",
-    "build": "npx vite build",
-    "build:watch": "npx vite build --watch",
+    "build:content": "vite build --config vite.content.config.ts",
+    "build:background": "vite build --config vite.background.config.ts",
+    "build": "npm run build:content && npm run build:background",
     "chakra-typegen": "npx @chakra-ui/cli typegen ./src/popup/app/providers/Chakra/system.ts",
     "eslint": "npx eslint --max-warnings=0",
     "type-check": "tsc --pretty --noEmit"

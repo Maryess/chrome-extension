@@ -3,18 +3,13 @@
   "name": "Practice Chrome Extension",
   "version": "1.0.0",
   "description": "A simple React app as a Chrome extension",
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
-    }
-  ],
   "action": {
     "default_icon": "icons/logo.png"
   },
   "background": {
     "service_worker": "background.js"
   },
+
   "permissions": [
     "tabs",
     "declarativeNetRequest",
@@ -26,7 +21,7 @@
     "<all_urls>"
   ],
   "web_accessible_resources": [{
-    "resources": ["popup.html", "icons/*"],
+    "resources": ["content.js"],
     "matches": ["<all_urls>"]
   }]
 }

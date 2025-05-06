@@ -83,7 +83,7 @@ export default () => {
               />
         </div>
               <br />
-            {imageValue && localStorage.getItem('selected image')?
+            {imageValue?
             <Image src={`${imageValue}`} width={100} height={100} alt={file?.name}/>:null}
               <br/>
             <Button onClick={checkImageUrl} variant={'solid'}>
