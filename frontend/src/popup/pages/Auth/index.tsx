@@ -30,9 +30,9 @@ export default ()=>{
         <div className={styles.auth}>
             <form onSubmit={handleSubmit(onSubmit)} className={styles.auth__form}>
                 <div className={styles.auth__form_fields}>
-                    <label>Email</label>
+                    <label>email</label>
                     <input type='email' {...register('email')}/>
-                    <label>Password</label>
+                    <label>password</label>
                     <input type='text' {...register('password')}/>
                 </div>
                 <div className={styles.auth__form_buttons}>
