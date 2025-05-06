@@ -29,6 +29,10 @@ export default defineConfig({
       alias: {
         app: path.resolve(__dirname, 'src/popup/app'),
         pages: path.resolve(__dirname, 'src/popup/pages'),
+        api: path.resolve(__dirname, 'src/popup/api'),
+        services: path.resolve(__dirname, 'src/popup/services'),
+        store: path.resolve(__dirname, 'src/popup/store'),
+        hooks: path.resolve(__dirname, 'src/popup/hooks'),
         widgets: path.resolve(__dirname, 'src/popup/widgets'),
         features: path.resolve(__dirname, 'src/popup/features'),
         entities: path.resolve(__dirname, 'src/popup/entities'),

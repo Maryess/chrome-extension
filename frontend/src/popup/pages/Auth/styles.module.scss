@@ -1,0 +1,57 @@
+.auth{
+    height:100%;
+
+    &__form{
+        height: 15rem;
+        background-color: #F9F8F8 !important;
+        margin: 0 auto;
+        border-radius: 30px;
+        border:1px #111111 solid;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        box-shadow: 0 4px 12px rgba(41, 4, 63, 0.2);
+
+        &_fields{
+           padding: 0 1rem;
+            input{
+                border:1px #111111 solid;
+                width: 100%;
+                border-radius: 15px;
+                height: 2rem;
+                padding-left: 0.4rem;
+                outline: none;
+                background-color: #fff;
+            }
+
+            label{
+                opacity: 30%;
+                padding-left: 0.4rem;
+            }
+        }
+
+        &_buttons{
+            width: 100%;
+            padding:0 2rem;
+            padding-top: 2rem;
+            display: flex;
+            gap: 30px;
+            input{
+               width: 100%;
+               background-color: #fff;
+               border:1px #111111 solid;
+               border-radius: 5px;
+               height: 2rem;
+               box-shadow:  none;
+               cursor: pointer;
+
+               &:hover{
+                box-shadow: 0 4px 12px rgba(41, 4, 63, 0.2);
+                transition: box-shadow ease-in 0.3s;
+               }
+            }
+        }
+    }
+
+}

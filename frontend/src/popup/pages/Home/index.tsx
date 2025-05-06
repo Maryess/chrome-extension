@@ -2,6 +2,7 @@ import { Button, Image } from "@chakra-ui/react";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import styles from './styles.module.scss'
 import {Field} from "ui/index";
+import { useUserStore } from "store/store";
 
 type Props ={
 }
@@ -10,6 +11,7 @@ export default () => {
   const [imageValue,setImageValue] = useState<string>('')
   const [file,setFile] = useState<File | null>(null)
   const [mousePosition,setMousePosition] = useState<{x:number,y:number}>({x:0,y:0})
+  const [opacityValue,setOpacityValue] = useState<number>(0)
   const fileInputRef = useRef(null);
 
   const deleteFromLocalStorage = () =>{
@@ -73,27 +75,35 @@ export default () => {
       console.log(file)
     }
   }
+
+  const {logout} = useUserStore()
+
     return (
       <div className={styles.home}>
-        <div className={styles.home__upload}>
+        {!imageValue ?
+          <div className={styles.home__upload}>
             <Field
               onChange={uploadImage}
               type="file"
               placeholder="Choose file"
-              />
-        </div>
-              <br />
-            {imageValue?
-            <Image src={`${imageValue}`} width={100} height={100} alt={file?.name}/>:null}
-              <br/>
-            <Button onClick={checkImageUrl} variant={'solid'}>
-                Get image url
-            </Button>
-            <Button  onClick={()=>console.log(mousePosition)} variant={'solid'}>
-              Get position
-            </Button>
-            <Button  onClick={deleteFromLocalStorage} variant={'solid'}>
-              Delete local storage
+            />
+          </div>
+        :
+          <div className={styles.home__content}>
+            <div className={styles.home__content_settings}>
+              <span>change opacity</span>
+              <div className={styles.home__content_settings_opacity}>
+              <button className={styles.btn}></button>
+              </div>
+             
+            </div>
+            <div className={styles.home__content_images}>
+              <Image src={`${imageValue}`} alt={file?.name}/>
+            </div>
+          </div>
+        }
+            <Button  onClick={logout} variant={'solid'}>
+              logout
             </Button>
       </div>
     );

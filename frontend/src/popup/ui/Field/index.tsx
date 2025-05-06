@@ -4,14 +4,15 @@ import styles from './styles.module.scss'
 type Props = {
     onChange?:(e:ChangeEvent<HTMLInputElement>)=>void;
     placeholder:string;
-    type:'file' | 'email' | 'password';
+    type:string;
     label?:string;
     value?:string;
 }
 
 export default({onChange,placeholder, type, label,value}:Props)=>{
     return(
-        <div className={styles.fileInputWrapper}>
+         type === "file" &&
+           <div className={styles.fileInputWrapper}>
                 <input 
                 id="fileInput"
                 className={styles.input} 
@@ -23,5 +24,6 @@ export default({onChange,placeholder, type, label,value}:Props)=>{
                     {label || 'Choose file'}
                 </label>
         </div>
+          
     )
 }

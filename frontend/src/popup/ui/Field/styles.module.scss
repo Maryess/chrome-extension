@@ -6,7 +6,6 @@
     width: 100%;
     max-width: 400px; // Ограничиваем максимальную ширину
     margin: 0 auto;
-  
     // Скрываем нативный input, но оставляем функциональность
     .input[type="file"] {
       position: absolute;
@@ -15,22 +14,20 @@
       opacity: 0;
       left: 0;
       top: 0;
-      cursor: pointer;
       z-index: 2; // Важно для перекрытия
     }
   
     // Кастомная кнопка
     .fileInputLabel {
       padding: 12px 24px;
-      background: #007bff;
+      background: transparent;
       color: white;
       border-radius: 8px;
-      cursor: pointer;
       transition: all 0.3s ease;
       display: inline-block;
       width: auto;
       text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      color: #000;
   
       &:hover {
         background: #0069d9;
