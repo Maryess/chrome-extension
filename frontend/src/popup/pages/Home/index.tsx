@@ -2,6 +2,7 @@ import { Button, Image } from "@chakra-ui/react";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import styles from './styles.module.scss'
 import {Field} from "ui/index";
+import { useUserStore } from "store/store";
 
 type Props ={
 }
@@ -73,6 +74,9 @@ export default () => {
       console.log(file)
     }
   }
+
+  const {logout} = useUserStore()
+
     return (
       <div className={styles.home}>
         <div className={styles.home__upload}>
@@ -92,8 +96,8 @@ export default () => {
             <Button  onClick={()=>console.log(mousePosition)} variant={'solid'}>
               Get position
             </Button>
-            <Button  onClick={deleteFromLocalStorage} variant={'solid'}>
-              Delete local storage
+            <Button  onClick={logout} variant={'solid'}>
+              logout
             </Button>
       </div>
     );

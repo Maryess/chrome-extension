@@ -5,14 +5,16 @@ import { Link } from "react-router-dom"
 
 export default ({children}:{children:ReactNode}) =>{
     return(
-        <div>
+        <div className={styles.container}>
             <header className={styles.layout}>
                 <div className={styles.layout__logo}>
-                    <span>Perfect Site</span>  
+                    <span>PerfectStyles</span>  
                 </div>
                 <nav className={styles.layout__nav}>
                     <Link to="/">home</Link>
+                    <Link to="/settings">settings</Link>
                     <Link to="/contacts">contacts</Link>
+                    <Link to="/login">signin</Link>
                 </nav>
             </header>
             <div className={styles.content}>

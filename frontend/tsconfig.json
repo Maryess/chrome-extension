@@ -16,6 +16,10 @@
     "paths": {
       "app/*": ["./src/popup/app/*"],
       "pages/*": ["./src/popup/pages/*"],
+      "api/*": ["./src/popup/api/*"],
+      "services/*": ["./src/popup/services/*"],
+      "store/*": ["./src/popup/store/*"],
+      "hooks/*": ["./src/popup/hooks/*"],
       "widgets/*": ["./src/popup/widgets/*"],
       "features/*": ["./src/popup/features/*"],
       "entities/*": ["./src/popup/entities/*"],

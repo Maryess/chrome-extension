@@ -1,0 +1,23 @@
+@import url('./fonts/fonts.scss');
+
+#app{
+    margin: 0;
+    overflow: hidden;
+    border-bottom-left-radius:30px;
+    border-bottom-right-radius:30px;
+    background-color: #FFF9FC ;
+    font-family: "JejuMyeingo";
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 999999;
+    width: 320px;
+    height: 600px;
+    pointer-events: auto;
+    color:#000;
+    font-size: 14px;
+}
+
+body{
+    background-color: transparent;
+}
