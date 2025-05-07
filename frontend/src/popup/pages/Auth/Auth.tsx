@@ -1,5 +1,5 @@
 import { Field } from 'ui/index'
-import styles from './styles.module.scss'
+import styles from './Auth.module.scss'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { IAuthInputs } from 'shared/types/user.types'
 import { useUserStore } from 'store/store'

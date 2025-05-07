@@ -23,6 +23,7 @@
       "widgets/*": ["./src/popup/widgets/*"],
       "features/*": ["./src/popup/features/*"],
       "entities/*": ["./src/popup/entities/*"],
+      "styles/*": ["./src/popup/styles/*"],
       "shared/*": ["./src/popup/shared/*"],
       "components/*": ["./src/popup/components/*"],
       "ui/*": ["./src/popup/ui/*"]

@@ -1,0 +1,44 @@
+:root{
+    --primary:#EAF3FA;
+    --text-border:#1A1C1E;
+    --background:#F9FCFF;
+    --input:#F9FCFF;
+    --radius:30px;
+    --font-size:14px;
+}
+
+.pink-theme{
+    --primary:#F6E6F8;
+    --text-border:#3F3B3F;
+    --background:#FFF9FC;
+    --input:#FFFBFB;
+    --radius:30px;
+    --font-size:14px;
+}
+
+.green-theme{
+    --primary:#D2FBE4;
+    --text-border:#3E413F;
+    --background:#F9FFFC;
+    --input:#F4FFF9;
+    --radius:30px;
+    --font-size:14px;
+}
+
+.coffee-theme{
+    --primary:#FAF8F5;
+    --text-border:#3B3029;
+    --background:#FAF8F5;
+    --input:#F8F6F5;
+    --radius:30px;
+    --font-size:14px;
+}
+
+.dark-theme{
+    --primary:#1E1B1E;
+    --text-border:#F1EEF3;
+    --background:#141214;
+    --input:#2A262A;
+    --radius:30px;
+    --font-size:14px;
+}

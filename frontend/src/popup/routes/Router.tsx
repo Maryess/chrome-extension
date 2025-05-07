@@ -1,4 +1,4 @@
-import Auth from "pages/Auth"
+import Auth from "pages/Auth/Auth"
 import { Contacts, Home } from "pages/index"
 import { Route, Routes } from "react-router-dom"
 

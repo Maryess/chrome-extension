@@ -1,0 +1,25 @@
+@mixin flex($direction:row, $align:center, $justify:center, $gap:0){
+   display: flex;
+   flex-direction: $direction;
+   align-items: $align;
+   justify-content: $justify;
+   gap: $gap;
+}
+
+@mixin center {
+    @include flex(row, center, center);
+}
+
+@mixin center-column {
+    @inlude flex(column, center, center)
+}
+
+@mixin size($w,$h:$w) {
+    width: $w;
+    height: $h;
+}
+
+@mixin border-form($size, $color, $type, $radius){
+    border: $size $color $type;
+    border-radius: $radius;
+}

@@ -35,6 +35,7 @@ export default defineConfig({
         hooks: path.resolve(__dirname, 'src/popup/hooks'),
         widgets: path.resolve(__dirname, 'src/popup/widgets'),
         features: path.resolve(__dirname, 'src/popup/features'),
+        styles: path.resolve(__dirname, 'src/popup/styles'),
         entities: path.resolve(__dirname, 'src/popup/entities'),
         shared: path.resolve(__dirname, 'src/popup/shared'),
         components: path.resolve(__dirname, 'src/popup/components'),
