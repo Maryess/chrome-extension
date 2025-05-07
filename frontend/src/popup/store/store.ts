@@ -12,6 +12,12 @@ export interface IUserStore{
     logout:()=>void;
 }
 
+export interface IThemeStore{
+    theme:string;
+    setTheme:(theme:IThemeStore['theme'])=>void;
+    getTheme:()=>void; 
+}
+
 export const useUserStore = create(
     persist<IUserStore>((set)=> ({
         user:null,
@@ -56,4 +62,30 @@ export const useUserStore = create(
             name: 'user-storage', 
             skipHydration: false
         }
-    ))
+))
+
+export const useThemeStore = create<IThemeStore>((set)=>({
+    theme:'blue',
+    setTheme:(theme) => {
+        if(!chrome.storage){
+            localStorage.setItem('data-theme',theme)
+            set({theme})
+        }else{
+            chrome.storage.local.set({theme});
+            set({theme})
+        }
+    },
+    getTheme:()=>{
+        if(!chrome.storage){
+            const newTheme = localStorage.getItem('data-theme')
+            set({theme:newTheme || 'blue' })
+        }else{
+        chrome.storage.local.get('theme', (result) => {
+            if (result.theme) {
+              set({ theme: result.theme });
+            }
+          });
+        }
+    }
+})
+)

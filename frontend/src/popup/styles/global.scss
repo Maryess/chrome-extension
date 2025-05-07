@@ -2,33 +2,35 @@
 @use './reset.scss';
 @import url('./fonts/fonts.scss');
 
-#app{
-    margin: 0;
-    overflow: hidden;
-    font-family: "JejuMyeingo" !important;
-    border-bottom-left-radius:var(--radius);
-    border-bottom-right-radius:var(--radius);
-    background-color: var(--background);
+.my-extension-wrapper {
+    font-family: 'JejuMyeingo', sans-serif;
+    * {
+      box-sizing: border-box;
+    }
+  
+    input {
+      border: 1px solid var(--text-border);
+      background: transparent;
+      color: var(--text-border);
+    }
+  
+    input:-webkit-autofill {
+      box-shadow: 0 0 0 1000px var(--text-border) inset !important;
+      -webkit-text-fill-color: var(--text) !important;
+    }
+}
+  
+#app {
     position: fixed;
     top: 0;
     right: 0;
-    z-index: 999999;
     width: 320px;
     height: 600px;
-    pointer-events: auto;
-    color:var(text-border);
-    font-size: var(--font-size);
-}
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0px 1000px var(--input-border) inset !important; 
-  -webkit-text-fill-color: var(--text-border) !important; 
-  transition: background-color 5000s ease-in-out 0s; 
-}
-
-body{
-    background-color: transparent;
+    z-index: 2147483647;
+    background-color: var(--background);
+    color: var(--text-border);
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
+    overflow: hidden;
+    display: block;
 }

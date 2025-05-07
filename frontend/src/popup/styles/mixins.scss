@@ -19,7 +19,7 @@
     height: $h;
 }
 
-@mixin border-form($size, $color, $type, $radius){
+@mixin border-form($size, $color, $type, $radius:none){
     border: $size $color $type;
     border-radius: $radius;
 }

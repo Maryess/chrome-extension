@@ -3,10 +3,10 @@ import styles from './Layout.module.scss';
 import { Link, useLocation } from "react-router-dom";
 
 const navData = [
-  { path: '/', label: 'Home' },
-  { path: '/settings', label: 'Settings' },
-  { path: '/contacts', label: 'Contacts' },
-  { path: '/login', label: 'Login' }
+  { path: '/', label: 'home' },
+  { path: '/settings', label: 'settings' },
+  { path: '/contacts', label: 'contacts' },
+  { path: '/login', label: 'login' }
 ];
 
 export default function Layout({ children }: { children: ReactNode }) {
