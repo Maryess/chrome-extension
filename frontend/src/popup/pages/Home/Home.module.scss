@@ -1,0 +1,69 @@
+@use 'styles/mixins.scss' as *;
+@use 'styles/variables.scss';
+
+.home {
+    @include size(100%,100%);
+    .content {
+      @include center-column;
+      gap: 1.2rem;
+      .settings {
+        @include center-column;
+        width: 80%;
+        gap: 0.4rem;
+        span {
+          color: var(--text-border);
+          margin-bottom: 0.2rem;
+          opacity: 0.5;
+        }
+  
+        .opacity{
+          position: relative;
+          background: linear-gradient(to right,#FFFBFB, #111111 100%);
+          @include border-form(1px, var(--text-border), solid, var(--radius));
+          @include size(100%,0.4rem);
+
+          .btn {
+            position: absolute;
+            top: 3px;
+            left: 20%;
+            @include size(0.8rem,0.8rem);
+            @include border-form(1px, var(--text-border), solid, 50%);
+            transform: translate(-50%, -50%);
+            background-color: var(--primary);
+            cursor: pointer;
+          }
+        }
+
+      }
+  
+      .images {
+        @include border-form(1px, var(--text-border), dashed, 5px);
+        display: grid;
+        background-color: var(--primary);
+        padding: 0.6rem;
+  
+        img {
+          @include size(86px,86px);
+          @include border-form(1px, var(--text-border), solid, 5px);
+          object-fit: cover;
+          opacity: 0.9;
+          transition: transform 0.2s ease;
+          &:hover {
+            transform: scale(1.05);
+          }
+        }
+      }
+    }
+  
+    .upload {
+      @include center;
+      @include border-form(1px, var(--text-border), dashed, var(--radius));
+      margin: 0 auto;
+      height: 15rem;
+      background-color: var(--primary);
+      text-align: center;
+      padding: 1rem;
+      color: var(--text-border);
+    }
+  }
+  

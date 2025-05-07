@@ -1,14 +1,14 @@
-import './popup/styles/global.scss'
+import 'styles/global.scss';
 
 const containerId = 'app';
-const existing = document.getElementById(containerId);
+let container = document.getElementById(containerId);
 
-if (existing) {
-  existing.remove(); // Закрыть UI
+if (container) {
+  container.remove();
 } else {
-  const container = document.createElement('div');
+  container = document.createElement('div');
+  container.className = 'my-extension-wrapper';
   container.id = containerId;
-
   document.body.appendChild(container);
 
   import('react').then(React => {
@@ -20,4 +20,3 @@ if (existing) {
     });
   });
 }
-

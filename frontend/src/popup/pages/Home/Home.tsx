@@ -1,6 +1,5 @@
-import { Button, Image } from "@chakra-ui/react";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
-import styles from './styles.module.scss'
+import styles from './Home.module.scss'
 import {Field} from "ui/index";
 import { useUserStore } from "store/store";
 
@@ -81,7 +80,7 @@ export default () => {
     return (
       <div className={styles.home}>
         {!imageValue ?
-          <div className={styles.home__upload}>
+          <div className={styles.upload}>
             <Field
               onChange={uploadImage}
               type="file"
@@ -89,22 +88,22 @@ export default () => {
             />
           </div>
         :
-          <div className={styles.home__content}>
-            <div className={styles.home__content_settings}>
+          <div className={styles.content}>
+            <div className={styles.settings}>
               <span>change opacity</span>
-              <div className={styles.home__content_settings_opacity}>
-              <button className={styles.btn}></button>
+              <div className={styles.opacity}>
+                <button className={styles.btn}></button>
               </div>
              
             </div>
-            <div className={styles.home__content_images}>
-              <Image src={`${imageValue}`} alt={file?.name}/>
+            <div className={styles.images}>
+              <img src={`${imageValue}`} alt={file?.name}/>
             </div>
           </div>
         }
-            <Button  onClick={logout} variant={'solid'}>
+            <button  onClick={logout}>
               logout
-            </Button>
+            </button>
       </div>
     );
 };

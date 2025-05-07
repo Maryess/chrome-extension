@@ -1,9 +1,11 @@
+@use 'styles/variables.scss';
+
 .auth{
     height:100%;
 
     &__form{
         height: 15rem;
-        background-color: #F9F8F8 !important;
+        background-color: var(--primary);
         margin: 0 auto;
         border-radius: 30px;
         border:1px #111111 solid;
@@ -22,7 +24,7 @@
                 height: 2rem;
                 padding-left: 0.4rem;
                 outline: none;
-                background-color: #fff;
+                background-color: var(--input);
             }
 
             label{
@@ -39,7 +41,7 @@
             gap: 30px;
             input{
                width: 100%;
-               background-color: #fff;
+               background-color: var(--input);
                border:1px #111111 solid;
                border-radius: 5px;
                height: 2rem;

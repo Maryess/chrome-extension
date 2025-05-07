@@ -1,0 +1,16 @@
+@use 'styles/mixins.scss' as *;
+@use 'styles/variables.scss';
+
+.theme{
+    width:100%;
+
+    .btn{
+        background-color: var(--primary);
+        border-radius: 5px;
+        @include size(17px,17px);
+        border: none;
+        &.active{
+            @include border-form(1px, var(--text-border), solid, 5px);
+        }
+    }
+}
