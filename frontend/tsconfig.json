@@ -14,6 +14,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "paths": {
+      "public/*": ["./public/*"],
       "app/*": ["./src/popup/app/*"],
       "pages/*": ["./src/popup/pages/*"],
       "api/*": ["./src/popup/api/*"],

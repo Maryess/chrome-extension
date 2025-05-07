@@ -27,6 +27,7 @@ export default defineConfig({
   ],
    resolve: {
       alias: {
+        public: path.resolve(__dirname, 'public/'),
         app: path.resolve(__dirname, 'src/popup/app'),
         pages: path.resolve(__dirname, 'src/popup/pages'),
         api: path.resolve(__dirname, 'src/popup/api'),

@@ -1,44 +1,44 @@
 :root[data-theme = 'blue']{
-    --primary:#EAF3FA;
-    --text-border:#1A1C1E;
-    --background:#F9FCFF;
-    --input:#F9FCFF;
+    --primary:#e3eef8;
+    --text-border:#2a2d32;
+    --background:#f6f9fc;
+    --input:#eff4f8;
     --radius:30px;
     --font-size:14px;
 }
 
 :root[data-theme = 'pink']{
-    --primary:#F6E6F8;
-    --text-border:#3F3B3F;
-    --background:#FFF9FC;
-    --input:#FFFBFB;
+    --primary:#f3e6f1;
+    --text-border:#3c363c;
+    --background:#fff7fb;
+    --input:#fdf5f9;
     --radius:30px;
     --font-size:14px;
 }
 
 :root[data-theme = 'green']{
-    --primary:#D2FBE4;
-    --text-border:#3E413F;
-    --background:#F9FFFC;
-    --input:#F4FFF9;
+    --primary:#def8eb;
+    --text-border:#38423d;
+    --background:#f5fcf8;
+    --input:#eefbf3;
     --radius:30px;
     --font-size:14px;
 }
 
 :root[data-theme = 'coffee']{
-    --primary:#F4EDE5;
-    --text-border:#3B3029;
-    --background:#FAF8F5;
-    --input:#F8F6F5;
+    --primary:#efe8e0;
+    --text-border:#3a322c;
+    --background:#f9f6f3;
+    --input:#f5f1ee;
     --radius:30px;
     --font-size:14px;
 }
 
 :root[data-theme = 'dark']{
-    --primary:#1E1B1E;
-    --text-border:#F1EEF3;
-    --background:#141214;
-    --input:#2A262A;
+    --primary:#7b7ef9;
+    --text-border:#e0e0e0;
+    --background:#1a1b1e;
+    --input:#2c2d31;
     --radius:30px;
     --font-size:14px;
 }

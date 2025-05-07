@@ -1,6 +1,7 @@
 import { ReactNode, useEffect, useState } from "react";
 import styles from './Layout.module.scss';
 import { Link, useLocation } from "react-router-dom";
+import logo from 'public/icons/perfect-styles.svg'
 
 const navData = [
   { path: '/', label: 'home' },
@@ -21,7 +22,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     <div className={styles.container}>
       <header className={styles.layout}>
         <div className={styles.logo}>
-          <span>PerfectStyles</span>
+            {!chrome.runtime ?  <img src={logo} alt="logo"/> :<img src={chrome.runtime.getURL(logo)}/> }
         </div>
         <nav className={styles.nav}>
           {navData.map((element) => (
