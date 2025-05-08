@@ -1,5 +1,6 @@
 {
-  "compilerOptions": {
+ "compilerOptions": {
+    "baseUrl": "./src/popup",              // <--- вот это важно
     "alwaysStrict": true,
     "strict": true,
     "module": "ESNext",
@@ -9,25 +10,24 @@
     "moduleResolution": "node",
     "lib": ["DOM", "ES2020"],
     "sourceMap": true,
-    "types": ["@chakra-ui/react", "@types/chrome"],
+    "types": ["@types/chrome"],
     "noEmit": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "paths": {
-      "public/*": ["./public/*"],
-      "app/*": ["./src/popup/app/*"],
-      "pages/*": ["./src/popup/pages/*"],
-      "api/*": ["./src/popup/api/*"],
-      "services/*": ["./src/popup/services/*"],
-      "store/*": ["./src/popup/store/*"],
-      "hooks/*": ["./src/popup/hooks/*"],
-      "widgets/*": ["./src/popup/widgets/*"],
-      "features/*": ["./src/popup/features/*"],
-      "entities/*": ["./src/popup/entities/*"],
-      "styles/*": ["./src/popup/styles/*"],
-      "shared/*": ["./src/popup/shared/*"],
-      "components/*": ["./src/popup/components/*"],
-      "ui/*": ["./src/popup/ui/*"]
+      "public/*": ["../public/*"],
+      "app/*": ["app/*"],
+      "pages/*": ["pages/*"],
+      "api/*": ["api/*"],
+      "services/*": ["services/*"],
+      "store/*": ["store/*"],
+      "hooks/*": ["shared/lib/hooks/*"],
+      "widgets/*": ["widgets/*"],
+      "features/*": ["features/*"],
+      "entities/*": ["entities/*"],
+      "styles/*": ["shares/styles/*"],
+      "shared/*": ["shared/*"],
+      "ui/*": ["shared/ui"]
     }
   },
   "include": [

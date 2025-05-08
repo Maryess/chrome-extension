@@ -16,7 +16,8 @@ export default function ThemeSelector() {
         <button
           key={element}
           type='submit'
-          className={`${styles.btn} ${theme === element ? styles.active : ''}`}
+          className={`${styles.btn} ${theme === element ? styles.active : styles[element]}`}
+          aria-label={`Switch to ${element} theme`}
           onClick={() => handleChangeTheme(element)}
         />
       ))}

@@ -6,8 +6,7 @@ import logo from 'public/icons/perfect-styles.svg'
 const navData = [
   { path: '/', label: 'home' },
   { path: '/settings', label: 'settings' },
-  { path: '/contacts', label: 'contacts' },
-  { path: '/login', label: 'login' }
+  { path: '/contacts', label: 'contacts' }
 ];
 
 export default function Layout({ children }: { children: ReactNode }) {

@@ -1,9 +1,9 @@
-import { Field } from 'ui/index'
+import { Field } from 'shared/ui/index'
 import styles from './Auth.module.scss'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { IAuthInputs } from 'shared/types/user.types'
 import { useUserStore } from 'store/store'
-import { useAuthRedirect } from 'hooks/useAuthRedirect'
+import { useAuthRedirect } from 'shared/lib/hooks/useAuthRedirect'
 import toast from 'react-hot-toast'
 import { useState } from 'react'
 

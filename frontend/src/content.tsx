@@ -13,7 +13,7 @@ if (container) {
 
   import('react').then(React => {
     import('react-dom/client').then(ReactDOM => {
-      import('./popup/App').then(({ default: App }) => {
+      import('./popup/app/App').then(({ default: App }) => {
         const root = ReactDOM.createRoot(container!);
         root.render(React.createElement(App));
       });
