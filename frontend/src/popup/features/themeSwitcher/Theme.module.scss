@@ -1,0 +1,40 @@
+@use 'styles/mixins.scss' as *;
+@use 'styles/variables.scss';
+
+.theme {
+    display: flex;
+    gap: 0.4rem;
+    width: 100%;
+    height: 3rem;
+    background-color: var(--input);
+    padding:0.3rem 0.6rem;
+    @include border-form(1px, var(--text-border), dashed, 5px);
+    .btn {
+      border-radius: 5px;
+      @include size(17px, 17px);
+      border: none;
+      &.active {
+        @include border-form(1px, var(--text-border), solid, 5px);
+      }
+    }
+  
+    .pink {
+      background-color:#f3e6f1;
+    }
+  
+    .blue {
+     background-color: #e3eef8;
+    }
+  
+    .green {
+      background-color: #def8eb;
+    }
+  
+    .coffee {
+      background-color: #efe8e0;
+    }
+  
+    .dark {
+      background-color:#1a1b1e ;
+    }
+}

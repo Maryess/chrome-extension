@@ -6,16 +6,14 @@ chrome.action.onClicked.addListener(async (tab) => {
     func: () => {
       const container = document.getElementById('my-extension-root');
       if (container) {
-        container.remove(); // Закрываем
+        container.remove();
       } else {
-        // Запускаем content.js — он сам вставит UI
         chrome.runtime.sendMessage({ type: 'INJECT_UI' });
       }
     },
   });
 });
 
-// Принимаем сообщение и инжектим только один раз
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.type === 'INJECT_UI' && sender.tab?.id) {
     chrome.scripting.executeScript({
