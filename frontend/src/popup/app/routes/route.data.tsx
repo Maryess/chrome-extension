@@ -10,10 +10,6 @@ export const routeData = [{
     element:<Contacts/>
 },
 {
-    path:'/login',
-    element:<Auth/>
-},
-{
     path:'/settings',
     element:<Settings/>
 }

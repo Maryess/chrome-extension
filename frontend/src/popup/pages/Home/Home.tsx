@@ -1,9 +1,7 @@
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import styles from './Home.module.scss'
 import {Field, Heading} from "shared/ui/index";
-import { useUserStore } from "store/store";
 import { useUploadImages } from "hooks/useUploadImage";
-
 
 type Props ={
 }
@@ -12,6 +10,7 @@ export default () => {
   const {imageValue,uploadImage,file} = useUploadImages()
   const [mousePosition,setMousePosition] = useState<{x:number,y:number}>({x:0,y:0})
   const [opacityValue,setOpacityValue] = useState<number>(0)
+  const [progress,setProgress] = useState<number>(0)
   const fileInputRef = useRef(null);
 
   const deleteFromLocalStorage = () =>{
@@ -32,8 +31,7 @@ export default () => {
       window.removeEventListener('mousemove', getMousePosition);
     };
   },[])
-  
-    return (
+     return (
       <div className={styles.home}>
         {!imageValue ?
           <div className={styles.upload}>
@@ -49,6 +47,7 @@ export default () => {
               <Heading title="change opacity"/>
               <div className={styles.opacity}>
                 <button className={styles.btn}></button>
+                <span>{opacityValue}</span>
               </div>
              
             </div>
