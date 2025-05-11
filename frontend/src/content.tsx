@@ -1,6 +1,14 @@
 import { getFromChromeStorage } from 'shared/lib/helpers/chromeStorage';
 import 'styles/global.scss';
 
+
+const addImage = (imageUrl:string) => {
+  const image = document.createElement('img')
+  image.className = 'image_container'
+  image.src = imageUrl
+  document.body.appendChild(image)
+}
+
 const removeImage = () => {
   const existingImage = document.querySelector('img.image_container');
   if (existingImage) {
@@ -20,6 +28,15 @@ if (container) {
   container.id = containerId;
   document.body.appendChild(container);
 
+  getFromChromeStorage<{ imageName: string; imageUrlBase64: string }>('selected image')
+  .then((data) => {
+    if (data?.imageUrlBase64) {
+      addImage(data.imageUrlBase64); 
+    } else {
+      console.warn('The image not found');
+    }
+  }); 
+
   import('react').then(React => {
     import('react-dom/client').then(ReactDOM => {
       import('./popup/app/App').then(({ default: App }) => {
@@ -28,22 +45,6 @@ if (container) {
       });
     });
   });
-
-  const addImage = (imageUrl:string) => {
-    const image = document.createElement('img')
-    image.className = 'image_container'
-    image.src = imageUrl
-    document.body.appendChild(image)
-  }
-  
-  getFromChromeStorage<{ imageName: string; imageUrlBase64: string }>('selected image')
-    .then((data) => {
-      if (data?.imageUrlBase64) {
-        addImage(data.imageUrlBase64); 
-      } else {
-        console.warn('Изображение не найдено');
-      }
-    });
 }
 
 

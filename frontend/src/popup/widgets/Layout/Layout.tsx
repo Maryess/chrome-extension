@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useState } from "react";
 import styles from './Layout.module.scss';
-import { Link, useLocation } from "react-router-dom";
 import logo from 'public/icons/perfect-styles.svg'
+import { Link, useLocation } from "react-router";
 
 const navData = [
   { path: '/', label: 'home' },
