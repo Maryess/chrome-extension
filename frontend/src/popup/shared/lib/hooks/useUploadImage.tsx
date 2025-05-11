@@ -1,4 +1,6 @@
 import { ChangeEvent, useState } from "react";
+import { setToLocalStorage } from "../helpers/localStorage";
+import { setToChromeStorage } from "../helpers/chromeStorage";
 
 export const useUploadImages = () => {
     const [file,setFile] = useState<File | null>(null)
@@ -15,21 +17,17 @@ export const useUploadImages = () => {
               
       
               if(typeof chrome !== undefined && chrome.storage?.local){
-                chrome.storage.local.set({ 
-                  lastSelectedFile:{
+                setToChromeStorage('selected image',{ 
                   imageName:file.name,
                   imageUrlBase64: event.target.result
-                }
                 })
               }else{
                 console.log('chrome storage не доступен, сохраняем в localstorage')
-                localStorage.setItem('selected image',
-                  JSON.stringify({
-                    name: file.name,
-                    size: file.size,
-                    imageUrlBase64: event.target.result
-                  })
-                )
+                setToLocalStorage('selected image',JSON.stringify({
+                  name: file.name,
+                  size: file.size,
+                  imageUrlBase64: event.target.result
+                }) )
               }
             }
             };

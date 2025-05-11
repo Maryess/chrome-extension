@@ -14,12 +14,11 @@
           position: relative;
           background: linear-gradient(to right,#FFFBFB, #111111 100%);
           @include border-form(1px, var(--text-border), solid, var(--radius));
-          @include size(100%,0.4rem);
+          @include size(65%,0.4rem);
 
           .btn {
             position: absolute;
             top: 3px;
-            left: 20%;
             @include size(0.8rem,0.8rem);
             @include border-form(1px, var(--text-border), solid, 50%);
             transform: translate(-50%, -50%);
