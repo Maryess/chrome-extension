@@ -25,7 +25,7 @@
       "widgets/*": ["widgets/*"],
       "features/*": ["features/*"],
       "entities/*": ["entities/*"],
-      "styles/*": ["shares/styles/*"],
+      "styles/*": ["shared/styles/*"],
       "shared/*": ["shared/*"],
       "ui/*": ["shared/ui"]
     }

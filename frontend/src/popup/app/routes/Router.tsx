@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes } from "react-router"
 import { routeData } from "./route.data"
 
 export const Router = () => {
