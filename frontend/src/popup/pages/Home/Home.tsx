@@ -6,16 +6,18 @@ import { useDragOpacity } from "shared/hooks/useDragOpacity";
 import { UploadImage } from "./ui/UploadImage";
 import { DragOpacity } from "./ui/DragOpacity";
 import { ImagePreview } from "./ui/ImagePreview";
+import { removeFromChromeStorage } from "shared/lib/helpers/chromeStorage";
+import { removeFromLocalStorage } from "shared/lib/helpers/localStorage";
 
 type Props ={
 }
 
 export default () => {
-  const {imageValue,uploadImage,file} = useUploadImages()
+  const {imageValue,uploadImage,file,syncFromStorage,setImageValue,setFile} = useUploadImages()
   const {opacityValue,positionValue,handleMouseDown} = useDragOpacity()
   const [mousePosition,setMousePosition] = useState<{x:number,y:number}>({x:0,y:0})
 
-  const showUpload = !imageValue && opacityValue === 0 && positionValue === 0;
+  const showUpload = !imageValue;
 
   useEffect(()=>{
     const getMousePosition = (e:MouseEvent) => {
@@ -33,6 +35,18 @@ export default () => {
     };
   },[])
 
+  const deleteFromStorage = async() => {
+    if(chrome && chrome.storage){
+      await removeFromChromeStorage("selected image")
+    }else{
+      removeFromLocalStorage("selected image")
+    }
+
+    await syncFromStorage()
+    setImageValue('');
+    setFile(null);
+  }
+
      return (
       <div className={styles.home}>
         {showUpload ?
@@ -48,6 +62,8 @@ export default () => {
             fileName={file?.name}/>
           </div>
         }
+
+        <button onClick={deleteFromStorage}></button>
       </div>
     );
 };

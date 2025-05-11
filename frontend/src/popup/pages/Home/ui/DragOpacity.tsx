@@ -7,7 +7,7 @@ type Props = {
     handleMouseDown: ()=>void;
 }
 
-export const DragOpacity = ({opacity,positionBtn,handleMouseDown}:Props) => {
+export const DragOpacity = ({positionBtn,handleMouseDown}:Props) => {
     return (
         <div className={styles.settings}>
             <Heading title="change opacity"/>

@@ -20,7 +20,6 @@ export const useDragOpacity = () => {
           localStorage.setItem('dragOpacity', JSON.stringify(data));
         }
       };
-
       useEffect(() => {
         const getFromStorage = async () => {
           let data;

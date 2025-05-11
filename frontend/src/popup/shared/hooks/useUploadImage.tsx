@@ -35,29 +35,33 @@ export const useUploadImages = () => {
           }
       }
 
+      const syncFromStorage = async () => {
+        let data;
+        if (chrome && chrome.storage) {
+          data = await getFromChromeStorage("selected image");
+        } else {
+          const storage = getFromLocalStorage("selected image");
+          data = storage ? JSON.parse(storage) : null;
+        }
+      
+        if (data && data.imageUrlBase64) {
+          setImageValue(data.imageUrlBase64);
+        } else {
+          setImageValue(""); // очищаем если ничего нет
+        }
+      };
 
-  useEffect(() => {
-    const getFromStorage = async() => {
-      let data;
-      if (chrome && chrome.storage) {
-        data = await getFromChromeStorage('selected image');
-      } else {
-        const storage = getFromLocalStorage('selected image');
-        data = storage ? JSON.parse(storage) : null;
-      }
-
-      if(data && data.imageUrlBase64){
-        setImageValue(data.imageUrlBase64)
-      }
-    }
-
-    getFromStorage()
-  }, []);
+      useEffect(() => {
+        syncFromStorage();
+      }, []);
     
 
     return{
         uploadImage,
         imageValue,
-        file
+        file,
+        setImageValue,
+        syncFromStorage,
+        setFile
     }
 }
