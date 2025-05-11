@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { setToChromeStorage } from "../helpers/chromeStorage";
+import { getFromChromeStorage, setToChromeStorage } from "../lib/helpers/chromeStorage";
+import { getFromLocalStorage } from "../lib/helpers/localStorage";
 
 export const useDragOpacity = () => {
       const [positionValue,setPositionValue] = useState<number>(0)
@@ -11,25 +12,44 @@ export const useDragOpacity = () => {
       const opacityMaxLength = 1;
       const positionMaxLength = 200;
 
-
       const saveToStorage = (opacity: number, position: number) => {
         const data = { opacity, positionBtn: position };
         if (chrome && chrome.storage) {
           setToChromeStorage('dragOpacity', data);
         } else {
-          localStorage.setItem('opacity', JSON.stringify(data));
+          localStorage.setItem('dragOpacity', JSON.stringify(data));
         }
       };
+
+      useEffect(() => {
+        const getFromStorage = async () => {
+          let data;
+          if (chrome && chrome.storage) {
+            data = await getFromChromeStorage('dragOpacity');
+          } else {
+            data = getFromLocalStorage('dragOpacity');
+          }
+    
+          if (data) {
+            const { opacity, positionBtn } = data;
+            setOpacityValue(opacity || 0);
+            setPositionValue(positionBtn || 0);
+            opacityRef.current = opacity || 0;
+            positionBtnRef.current = positionBtn || 0;
+          }
+        };
+    
+        getFromStorage();
+      }, []);
     
 
       const handleMouseDown = () => {
         isDragging.current = true;
-        saveToStorage(opacityValue,positionValue)
       };
     
       const handleMouseUp = () => {
         isDragging.current = false;
-        saveToStorage(opacityValue,positionValue)
+        saveToStorage(opacityRef.current,positionBtnRef.current)
       };
     
     useEffect(() => {
@@ -38,15 +58,14 @@ export const useDragOpacity = () => {
         if (e.clientX > prevMouseRef.current && opacityRef.current < opacityMaxLength) {
           opacityRef.current = Math.min(opacityRef.current + 0.01, opacityMaxLength);
           positionBtnRef.current = Math.min(positionBtnRef.current + 1,positionMaxLength )
-          setOpacityValue(Math.floor(opacityRef.current * 10)/10);
-          setPositionValue(positionBtnRef.current);
         } else if (e.clientX < prevMouseRef.current && opacityRef.current > 0) {
           opacityRef.current = Math.max(opacityRef.current - 0.01, 0);
           positionBtnRef.current = Math.max(positionBtnRef.current - 1,0 )
-          setOpacityValue(Math.floor(opacityRef.current * 10)/10);
-          setPositionValue(positionBtnRef.current);
         }
-    
+
+        setOpacityValue(Math.floor(opacityRef.current * 10) / 10);
+        setPositionValue(positionBtnRef.current);
+       
         prevMouseRef.current = e.clientX
       };
     

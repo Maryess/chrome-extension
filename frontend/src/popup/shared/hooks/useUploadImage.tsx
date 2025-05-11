@@ -1,6 +1,6 @@
-import { ChangeEvent, useState } from "react";
-import { setToLocalStorage } from "../helpers/localStorage";
-import { setToChromeStorage } from "../helpers/chromeStorage";
+import { ChangeEvent, useEffect, useState } from "react";
+import { getFromLocalStorage, setToLocalStorage } from "../lib/helpers/localStorage";
+import { getFromChromeStorage, setToChromeStorage } from "../lib/helpers/chromeStorage";
 
 export const useUploadImages = () => {
     const [file,setFile] = useState<File | null>(null)
@@ -34,6 +34,25 @@ export const useUploadImages = () => {
             reader.readAsDataURL(file);
           }
       }
+
+
+  useEffect(() => {
+    const getFromStorage = async() => {
+      let data;
+      if (chrome && chrome.storage) {
+        data = await getFromChromeStorage('selected image');
+      } else {
+        const storage = getFromLocalStorage('selected image');
+        data = storage ? JSON.parse(storage) : null;
+      }
+
+      if(data && data.imageUrlBase64){
+        setImageValue(data.imageUrlBase64)
+      }
+    }
+
+    getFromStorage()
+  }, []);
     
 
     return{
