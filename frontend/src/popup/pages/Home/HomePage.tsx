@@ -12,7 +12,7 @@ import { removeFromLocalStorage } from "shared/lib/helpers/localStorage";
 type Props ={
 }
 
-export default () => {
+export const Page = () => {
   const {imageValue,uploadImage,file,syncFromStorage,setImageValue,setFile} = useUploadImages()
   const {opacityValue,positionValue,handleMouseDown} = useDragOpacity()
   const [mousePosition,setMousePosition] = useState<{x:number,y:number}>({x:0,y:0})

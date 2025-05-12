@@ -10,7 +10,7 @@ type Props = {
     value?:string;
 }
 
-export default({onChange,onSubmit,placeholder, type, label,value}:Props)=>{
+export const Field = ({onChange,onSubmit,placeholder, type, label,value}:Props)=>{
     return(
         <>
          {type === "file" &&

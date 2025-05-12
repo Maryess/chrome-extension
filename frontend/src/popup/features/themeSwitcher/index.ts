@@ -1,0 +1,1 @@
+export {ThemeSelector as ThemeSwitcher} from './Theme'

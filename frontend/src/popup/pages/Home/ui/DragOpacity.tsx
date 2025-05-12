@@ -1,4 +1,4 @@
-import { Heading } from 'shared/ui'
+import { Heading } from 'shared/ui/Heading';
 import styles from '../Home.module.scss'
 
 type Props = {

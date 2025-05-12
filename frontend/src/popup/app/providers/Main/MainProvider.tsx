@@ -1,10 +1,9 @@
-import { ReactNode } from "react";
 import { Router } from "../../routes/Router";
-import ThemeProvider from "../Theme/ThemeProvider";
-import { Layout } from "widgets/index";
 import { MemoryRouter } from "react-router";
+import { Layout } from "widgets/Layout";
+import { ThemeProvider } from "../Theme";
 
-export default function App() {
+export const Provider=()=>{
   return (
     <ThemeProvider>
       <MemoryRouter initialEntries={['/']}>
