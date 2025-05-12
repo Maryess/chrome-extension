@@ -1,7 +1,6 @@
 import { ReactNode, useEffect, useState } from "react";
 import styles from './Layout.module.scss';
-import { Link, useLocation } from "react-router";
-import { Navigation } from "./ui/Navigaiton";
+import { Navigation } from "./ui/Navigation";
 import { Logo } from "./ui/Logo";
 
 export const Layout = ({ children }: { children: ReactNode }) => {

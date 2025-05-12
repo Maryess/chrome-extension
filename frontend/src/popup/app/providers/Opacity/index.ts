@@ -1,0 +1,1 @@
+export {Provider as OpacityProvider} from './OpacityProvider'

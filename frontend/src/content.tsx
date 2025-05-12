@@ -1,41 +1,43 @@
-import { getFromChromeStorage } from 'shared/lib/helpers/chromeStorage';
 import 'styles/global.scss';
-
-
-const addImage = (imageUrl:string) => {
-  const image = document.createElement('img')
-  image.className = 'image_container'
-  image.src = imageUrl
-  document.body.appendChild(image)
-}
-
-const removeImage = () => {
-  const existingImage = document.querySelector('img.image_container');
-  if (existingImage) {
-    existingImage.remove();
-  }
-}
+import { addImage, removeImage, updateImageOpacity } from './content/imageHandler';
+import { getImageData, getOpacityData } from './content/storage';
 
 const containerId = 'app';
 let container = document.getElementById(containerId);
 
 if (container) {
   container.remove();
-  removeImage()
+  removeImage();
 } else {
   container = document.createElement('div');
   container.className = 'my-extension-wrapper';
   container.id = containerId;
   document.body.appendChild(container);
 
-  getFromChromeStorage<{ imageName: string; imageUrlBase64: string }>('selected image')
-  .then((data) => {
-    if (data?.imageUrlBase64) {
-      addImage(data.imageUrlBase64); 
-    } else {
-      console.warn('The image not found');
-    }
-  }); 
+  Promise.all([getImageData(), getOpacityData()])
+    .then(([data, opacity]) => {
+      const actualOpacity = opacity?.opacity ?? 1;
+
+      if (data?.imageUrlBase64) {
+        addImage(data.imageUrlBase64, actualOpacity);
+
+        let lastOpacity = actualOpacity;
+
+        setInterval(() => {
+          chrome.storage.local.get('dragOpacity', (result) => {
+            const newOpacity = result.dragOpacity?.opacity ?? 1;
+        
+            if (newOpacity !== lastOpacity) {
+              lastOpacity = newOpacity;
+              console.log('🔄 Updating image opacity to:', newOpacity);
+              updateImageOpacity(newOpacity);
+            }
+          });
+        }, 300);
+      } else {
+        console.warn('The image not found');
+      }
+    });
 
   import('react').then(React => {
     import('react-dom/client').then(ReactDOM => {
@@ -47,4 +49,12 @@ if (container) {
   });
 }
 
-
+chrome.storage.onChanged.addListener((changes, areaName) => {
+  if (areaName === 'local' && changes['dragOpacity']) {
+    const newOpacity = changes['dragOpacity'].newValue?.opacity;
+    console.log('Detected opacity change in storage:', newOpacity);
+    if (typeof newOpacity === 'number') {
+      updateImageOpacity(newOpacity);
+    }
+  }
+});

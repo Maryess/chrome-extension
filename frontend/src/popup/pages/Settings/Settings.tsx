@@ -1,4 +1,4 @@
-import { ThemeSwitcher } from 'features/ThemeSwitcher'
+import { ThemeSwitcher } from 'features/ThemeSelector'
 import styles from './Settings.module.scss'
 import { Field } from 'shared/ui/Field'
 import { Heading } from 'shared/ui/Heading'
