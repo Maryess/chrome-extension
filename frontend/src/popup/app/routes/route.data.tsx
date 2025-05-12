@@ -1,16 +1,18 @@
-import { Auth, Contacts, Home, Settings } from "pages/index";
-import path from "path";
+import { ContactsPage } from "pages/Contacts";
+import { HomePage } from "pages/Home";
+import { SettingsPage } from "pages/Settings";
+
 
 export const routeData = [{
     path:'/*',
-    element:<Home/>
+    element:<HomePage/>
 },
 {
     path:'/contacts',
-    element:<Contacts/>
+    element:<ContactsPage/>
 },
 {
     path:'/settings',
-    element:<Settings/>
+    element:<SettingsPage/>
 }
 ]

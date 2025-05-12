@@ -1,4 +1,4 @@
-import { Field } from 'shared/ui'
+import { Field } from 'shared/ui/Field';
 import styles from '../Home.module.scss'
 import { ChangeEvent } from 'react';
 

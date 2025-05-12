@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Practice Chrome Extension",
+  "name": "Perfect Styles",
   "version": "1.0.0",
   "description": "A simple React app as a Chrome extension",
   "action": {

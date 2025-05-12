@@ -1,13 +1,12 @@
-import { useThemeStore } from 'store/store';
 import styles from './Theme.module.scss';
+import { Theme, useTheme } from 'app/providers/Theme/context';
 
-export default function ThemeSelector() {
+export const ThemeSelector = ()=> {
   const themes = ['pink', 'blue', 'green', 'coffee', 'dark'];
-  const setTheme = useThemeStore((s) => s.setTheme);
-  const theme = useThemeStore((s) => s.theme);
+  const {theme, setTheme} = useTheme()
 
   const handleChangeTheme = (newTheme:string) => {
-    setTheme(newTheme);
+    setTheme(newTheme as Theme);
   };
 
   return (

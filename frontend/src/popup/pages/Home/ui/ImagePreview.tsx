@@ -1,4 +1,4 @@
-import { Heading } from 'shared/ui';
+import { Heading } from 'shared/ui/Heading';
 import styles from '../Home.module.scss'
 
 type Props = {
@@ -12,7 +12,7 @@ export const ImagePreview = ({imageUrl, opacity, fileName}:Props) => {
         <>
             <Heading title="images"/>
             <div className={styles.images}>
-                <img src={imageUrl} style={{ opacity }} alt={fileName} />
+                <img src={imageUrl} style={{ opacity:opacity,transition:'opacity 0.3s ease' }} alt={fileName} />
             </div>
         </>
     )

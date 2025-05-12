@@ -4,7 +4,7 @@ type Props ={
     title:string;
 }
 
-export default ({title}:Props)=>{
+export const Heading = ({title}:Props)=>{
     return(
         <div className={styles.heading}>
         <span>
