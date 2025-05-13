@@ -56,10 +56,10 @@ export const useDragOpacity = () => {
         if (!isDragging.current) return;
         if (e.clientX > prevMouseRef.current && opacityRef.current < opacityMaxLength) {
           opacityRef.current = Math.min(opacityRef.current + 0.01, opacityMaxLength);
-          positionBtnRef.current = Math.min(positionBtnRef.current + 1,positionMaxLength )
+          positionBtnRef.current = Math.min(positionBtnRef.current + 2,positionMaxLength )
         } else if (e.clientX < prevMouseRef.current && opacityRef.current > 0) {
           opacityRef.current = Math.max(opacityRef.current - 0.01, 0);
-          positionBtnRef.current = Math.max(positionBtnRef.current - 1,0 )
+          positionBtnRef.current = Math.max(positionBtnRef.current - 2,0 )
         }
 
         setOpacityValue(Math.floor(opacityRef.current * 10) / 10);

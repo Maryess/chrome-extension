@@ -6,34 +6,32 @@ export const useUploadImages = () => {
     const [file,setFile] = useState<File | null>(null)
     const [imageValue,setImageValue] = useState<string>('')
 
-    const uploadImage = (e:ChangeEvent<HTMLInputElement>) => {
-          const file = e.target.files?.[0];
-          if (file) {
-            setFile(file);
-            const reader = new FileReader();
-            reader.onload = (event) => {
-              if (event.target?.result) {
-                setImageValue(event.target.result as string);
-              
-      
-              if(typeof chrome !== undefined && chrome.storage?.local){
-                setToChromeStorage('selected image',{ 
-                  imageName:file.name,
-                  imageUrlBase64: event.target.result
-                })
-              }else{
-                console.log('chrome storage не доступен, сохраняем в localstorage')
-                setToLocalStorage('selected image',JSON.stringify({
-                  name: file.name,
-                  size: file.size,
-                  imageUrlBase64: event.target.result
-                }) )
-              }
-            }
+    const uploadImage = (e: ChangeEvent<HTMLInputElement>) => {
+      const file = e.target.files?.[0];
+      if (file) {
+        setFile(file);
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          if (event.target?.result) {
+            const path = event.target.result as string;
+            setImageValue(path);
+    
+            const imageData = {
+              name: file.name,
+              path: path
             };
-            reader.readAsDataURL(file);
+    
+            if (typeof chrome !== "undefined" && chrome.storage?.local) {
+              setToChromeStorage("selected image", imageData);
+            } else {
+              console.log("chrome storage не доступен, сохраняем в localStorage");
+              setToLocalStorage("selected image", JSON.stringify(imageData));
+            }
           }
+        };
+        reader.readAsDataURL(file);
       }
+    };
 
       const syncFromStorage = async () => {
         let data;
@@ -44,10 +42,10 @@ export const useUploadImages = () => {
           data = storage ? JSON.parse(storage) : null;
         }
       
-        if (data && data.imageUrlBase64) {
-          setImageValue(data.imageUrlBase64);
+        if (data && data.path) {
+          setImageValue(data.path);
         } else {
-          setImageValue(""); // очищаем если ничего нет
+          setImageValue("");
         }
       };
 

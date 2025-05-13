@@ -5,12 +5,10 @@ import { useUploadImages } from "shared/hooks/useUploadImage";
 import { useDragOpacity } from "shared/hooks/useDragOpacity";
 import { UploadImage } from "./ui/UploadImage";
 import { DragOpacity } from "./ui/DragOpacity";
-import { ImagePreview } from "./ui/ImagePreview";
 import { removeFromChromeStorage } from "shared/lib/helpers/chromeStorage";
 import { removeFromLocalStorage } from "shared/lib/helpers/localStorage";
-
-type Props ={
-}
+import { Panel } from "./ui/Panel";
+import { ImagePreview } from "entities/ImagePreview";
 
 export const Page = () => {
   const {imageValue,uploadImage,file,syncFromStorage,setImageValue,setFile} = useUploadImages()
@@ -35,17 +33,17 @@ export const Page = () => {
     };
   },[])
 
-  const deleteFromStorage = async() => {
-    if(chrome && chrome.storage){
-      await removeFromChromeStorage("selected image")
-    }else{
-      removeFromLocalStorage("selected image")
+  const deleteFromStorage = async () => {
+    if (chrome && chrome.storage) {
+      await removeFromChromeStorage("selected image");
+    } else {
+      removeFromLocalStorage("selected image");
     }
-
-    await syncFromStorage()
+    await syncFromStorage();
     setImageValue('');
-    setFile(null);
-  }
+  };
+
+  
 
      return (
       <div className={styles.home}>
@@ -56,14 +54,12 @@ export const Page = () => {
             <DragOpacity positionBtn={positionValue} 
             opacity={opacityValue} 
             handleMouseDown={handleMouseDown}/>
-            
+            <Panel addImg={uploadImage} removeImg={deleteFromStorage}/>
             <ImagePreview opacity={opacityValue} 
             imageUrl={imageValue} 
             fileName={file?.name}/>
           </div>
         }
-
-        <button onClick={deleteFromStorage}></button>
       </div>
     );
 };
