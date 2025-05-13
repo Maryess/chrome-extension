@@ -1,9 +1,9 @@
 import { getFromChromeStorage } from "shared/lib/helpers/chromeStorage";
-import { IOpacity } from "shared/types/image";
+import { IImage, IOpacity } from "shared/types/image";
 
 export const ImageOverlayStorage = () => {
     const getImageData = () => {
-       return getFromChromeStorage<{ name: string; path: string }>('selected image')
+       return getFromChromeStorage<IImage>('selected image');
     }
     
     const getOpacityData = () => {
