@@ -1,5 +1,5 @@
 import { Heading } from 'shared/ui/Heading';
-import styles from '../Home.module.scss'
+import styles from './DragOpacity.module.scss'
 
 type Props = {
     opacity:number;

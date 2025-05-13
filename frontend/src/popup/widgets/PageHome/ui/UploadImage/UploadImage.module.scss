@@ -1,0 +1,13 @@
+@use 'styles/mixins.scss' as*;
+@use 'styles/variables.scss';
+
+.upload {
+    @include center;
+    @include border-form(1px, var(--text-border), dashed, var(--radius));
+    margin: 0 auto;
+    height: 15rem;
+    background-color: var(--primary);
+    text-align: center;
+    padding: 1rem;
+    color: var(--text-border);
+}

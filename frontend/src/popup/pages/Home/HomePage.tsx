@@ -1,14 +1,9 @@
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import {useEffect, useState } from "react";
 import styles from './Home.module.scss'
-import {Field, Heading} from "shared/ui/index";
-import { useUploadImages } from "shared/hooks/useUploadImage";
-import { useDragOpacity } from "shared/hooks/useDragOpacity";
-import { UploadImage } from "./ui/UploadImage";
-import { DragOpacity } from "./ui/DragOpacity";
 import { removeFromChromeStorage } from "shared/lib/helpers/chromeStorage";
 import { removeFromLocalStorage } from "shared/lib/helpers/localStorage";
-import { Panel } from "./ui/Panel";
 import { ImagePreview } from "entities/ImagePreview";
+import { DragOpacity, Panel, UploadImage, useUploadImages,useDragOpacity } from "widgets/PageHome";
 
 export const Page = () => {
   const {imageValue,uploadImage,file,syncFromStorage,setImageValue,setFile} = useUploadImages()
@@ -32,30 +27,24 @@ export const Page = () => {
       window.removeEventListener('mousemove', getMousePosition);
     };
   },[])
-
-  const deleteFromStorage = async () => {
-    if (chrome && chrome.storage) {
-      await removeFromChromeStorage("selected image");
-    } else {
-      removeFromLocalStorage("selected image");
-    }
-    await syncFromStorage();
-    setImageValue('');
-  };
-
-  
-
      return (
       <div className={styles.home}>
         {showUpload ?
           <UploadImage uploadImage={uploadImage}/>
         :
           <div className={styles.content}>
-            <DragOpacity positionBtn={positionValue} 
+            <DragOpacity 
+            positionBtn={positionValue} 
             opacity={opacityValue} 
             handleMouseDown={handleMouseDown}/>
-            <Panel addImg={uploadImage} removeImg={deleteFromStorage}/>
-            <ImagePreview opacity={opacityValue} 
+            <Panel 
+            addImg={uploadImage} 
+            removeImg={()=>{
+              removeFromChromeStorage('selected image')
+              setImageValue('')
+              }}/>
+            <ImagePreview 
+            opacity={opacityValue} 
             imageUrl={imageValue} 
             fileName={file?.name}/>
           </div>
