@@ -10,8 +10,18 @@
     @include flex(row, center, center);
 }
 
+@mixin align-center{
+    display: flex;
+    align-items: center;
+}
+
 @mixin center-column {
-    @inlude flex(column, center, center)
+    @include flex(column, center, center)
+}
+
+@mixin column {
+    display: flex;
+    flex-direction: column;
 }
 
 @mixin size($w,$h:$w) {
