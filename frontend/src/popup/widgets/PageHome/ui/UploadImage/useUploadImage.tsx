@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import { getFromLocalStorage, setToLocalStorage } from "../lib/helpers/localStorage";
-import { getFromChromeStorage, setToChromeStorage } from "../lib/helpers/chromeStorage";
+import { getFromLocalStorage, setToLocalStorage } from "../../../../shared/lib/helpers/localStorage";
+import { getFromChromeStorage, setToChromeStorage } from "../../../../shared/lib/helpers/chromeStorage";
 
 export const useUploadImages = () => {
     const [file,setFile] = useState<File | null>(null)

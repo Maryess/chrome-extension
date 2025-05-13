@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { getFromChromeStorage, setToChromeStorage } from "../lib/helpers/chromeStorage";
-import { getFromLocalStorage } from "../lib/helpers/localStorage";
+import { getFromChromeStorage, setToChromeStorage } from "../../../../shared/lib/helpers/chromeStorage";
+import { getFromLocalStorage } from "../../../../shared/lib/helpers/localStorage";
 
 export const useDragOpacity = () => {
       const [positionValue,setPositionValue] = useState<number>(0)

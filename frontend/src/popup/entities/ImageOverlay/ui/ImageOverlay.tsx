@@ -35,7 +35,6 @@ export const ImageOverlay = () => {
         const unsubscribeSelectedImage = onChangedChromeStorage<IImage>('selected image', async(newValue)=>{
             if(!newValue?.path){
                 console.log('Removing image')
-                const container = document.getElementById('app');
                 OverlayManagerRef.current.removeImage();
             }else{
                 const result = await getFromChromeStorage<{opacity:number}>('dragOpacity')

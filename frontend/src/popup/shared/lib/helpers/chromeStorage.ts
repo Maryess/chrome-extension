@@ -23,7 +23,7 @@ export const getFromChromeStorage = <T = any>(key: string): Promise<T | null> =>
   });
 };
 //удаление из chrome.storage
-export const removeFromChromeStorage = <T>(key:string, callback:(result: T | null)=>void ):Promise<void> => {
+export const removeFromChromeStorage = <T>(key:string, callback?:(result: T | null)=>void ):Promise<void> => {
   return new Promise((resolve, reject) => {
     chrome.storage.local.remove(key, () => {
       if (chrome.runtime.lastError) {

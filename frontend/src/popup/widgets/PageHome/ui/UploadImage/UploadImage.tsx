@@ -1,5 +1,5 @@
 import { Field } from 'shared/ui/Field';
-import styles from '../Home.module.scss'
+import styles from './UploadImage.module.scss'
 import { ChangeEvent } from 'react';
 
 type Props = {
