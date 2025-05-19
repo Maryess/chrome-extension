@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ImageOverlayStorage } from "../lib/ImageOverlayStorage";
 import { ImageOverlayManager } from "../lib/ImageOverlayManager";
 import { getFromChromeStorage, onChangedChromeStorage } from "shared/lib/helpers/chromeStorage";
@@ -6,14 +6,20 @@ import { IImage } from "shared/types/image";
 
 export const ImageOverlay = () => { 
     const {getImageData,getOpacityData} = ImageOverlayStorage()
-    const OverlayManagerRef =useRef(new ImageOverlayManager())
-
+    const [overlay] = useState(()=>new ImageOverlayManager())    
+    
     useEffect(() => {
-        Promise.all([getImageData(), getOpacityData()])
-          .then(([data, opacity]) => {
+        (async () => {
+          try {
+            const [data, opacity] = await Promise.all([
+              getImageData(),
+              getOpacityData()
+            ]);
+      
             const actualOpacity = opacity?.opacity ?? 1;
+      
             if (data?.path) {
-                OverlayManagerRef.current.addImage({
+              overlay.addImage({
                 path: data.path,
                 opacity: actualOpacity,
                 name: data.name
@@ -21,26 +27,29 @@ export const ImageOverlay = () => {
             } else {
               console.warn("The image not found");
             }
-          });
+          } catch (error) {
+            console.error("Failed to load image or opacity data:", error);
+          }
+        })();
       }, []);
-
+      
     //подписка на изменение dragOpacity и selected image в chrome.storage
     useEffect(()=>{
         const unsubscribeDragOpacity = onChangedChromeStorage<{opacity:number}>('dragOpacity', (newValue)=>{
             if(newValue?.opacity){
-                OverlayManagerRef.current.updateImageOpacity(newValue.opacity)
+                overlay.updateImageOpacity(newValue.opacity)
             }
         })
 
         const unsubscribeSelectedImage = onChangedChromeStorage<IImage>('selected image', async(newValue)=>{
             if(!newValue?.path){
                 console.log('Removing image')
-                OverlayManagerRef.current.removeImage();
+                overlay.removeImage();
             }else{
                 const result = await getFromChromeStorage<{opacity:number}>('dragOpacity')
                 const opacity = result?.opacity ?? 1;
 
-                OverlayManagerRef.current.addImage({
+                overlay.addImage({
                     path:newValue.path,
                     opacity,
                     name:newValue.name

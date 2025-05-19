@@ -1,0 +1,50 @@
+@use 'styles/mixins.scss' as *;
+@use 'styles/variables.scss';
+
+.settings {
+  @include flex(column, stretch, flex-start);
+  color: var(--text-border, #333);
+  max-width: 400px;
+  margin: 0 auto;
+  gap: 16px;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+button[type='submit'] {
+  padding: 10px 20px;
+  background-color: var(--primary);
+  color: var(--text-border);
+  border: none;
+  border-radius: calc(var(--radius) / 2);
+  font-weight: 600;
+  font-size: var(--font-size, 14px);
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.15s ease;
+
+  &:hover {
+    filter: brightness(0.9);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+}
