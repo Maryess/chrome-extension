@@ -11,32 +11,33 @@ export const Provider = ({ children }: { children: ReactNode })=>{
     useEffect(() => {
         const loadTheme = async () => {
             if (typeof chrome !== 'undefined' && chrome.storage) {
-                await getFromChromeStorage<Theme>('themeColor').then((storedTheme)=>{
-                    if(storedTheme){
-                        setThemeState(storedTheme)
-                        document.documentElement.setAttribute('data-theme', storedTheme);
-                    }
-                })
-            } else {
-                const stored =getFromLocalStorage('themeColor');
-                if(stored && theme.includes(stored)){
-                    setThemeState(stored as Theme);
-                    document.documentElement.setAttribute('data-theme', stored);
+                const settings = await getFromChromeStorage<{ theme?: Theme }>('settingsData');
+                if (settings?.theme && themes.includes(settings.theme)) {
+                    setThemeState(settings.theme);
+                    document.documentElement.setAttribute('data-theme', settings.theme);
                 }
-            }      
-            }
+            } 
+        }
         loadTheme();
     }, []);
+    
 
-    const setTheme = (newTheme:Theme) => {
-        setThemeState(newTheme)
+    const setTheme = async (newTheme: Theme) => {
+        setThemeState(newTheme);
+        document.documentElement.setAttribute('data-theme', newTheme);
+    
         if (typeof chrome !== 'undefined' && chrome.storage) {
-            setToChromeStorage('themeColor', newTheme)
-        }else{
-            setToLocalStorage('themeColor', newTheme)
+            const currentSettings = await getFromChromeStorage<Record<string, any>>('settingsData') || {};
+            const updatedSettings = {
+                ...currentSettings,
+                theme: newTheme,
+            };
+            await setToChromeStorage('settingsData', updatedSettings);
+        } else {
+            setToLocalStorage('themeColor', newTheme); 
         }
-        document.documentElement.setAttribute('data-theme',newTheme)
-    }
+    };
+    
 
     return (
         <ThemeContext.Provider value={{theme, setTheme}}>

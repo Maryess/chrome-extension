@@ -9,15 +9,12 @@ type Props = {
 
 export const DragOpacity = ({positionBtn,handleMouseDown}:Props) => {
     return (
-        <div className={styles.settings}>
-            <Heading title="change opacity"/>
-                <div className={styles.opacity}>
-                    <button 
+            <div className={styles.opacity}>
+                <button 
                     onMouseDown={handleMouseDown} 
                     className={styles.btn} style={{
                         left:positionBtn
-                    }}></button>
-                </div>
-        </div>
+                }}/>
+            </div>
     )
 }

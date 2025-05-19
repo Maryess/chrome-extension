@@ -1,8 +1,19 @@
-import { MainProvider } from "./providers/Main";
+import { ThemeProvider } from "./providers/Theme";
+import { MemoryRouter } from "react-router";
+import { Layout } from "widgets/Layout";
+import { Router } from "./routes/Router";
+import { ImageOverlay } from "entities/ImageOverlay";
 
 const App = () => {
   return (
-    <MainProvider/>
+    <ThemeProvider>
+      <MemoryRouter initialEntries={['/']}>
+        <Layout>
+          <Router />  
+          <ImageOverlay/>
+        </Layout>
+      </MemoryRouter>
+    </ThemeProvider>
   );
 };
 

@@ -10,7 +10,9 @@ export const UploadImage = ({uploadImage}:Props) => {
     return (
         <div className={styles.upload}>
             <Field
-                onChange={uploadImage}
+                onChange={
+                    uploadImage
+                }
                 type="file"
                 placeholder="Choose file"
             />
