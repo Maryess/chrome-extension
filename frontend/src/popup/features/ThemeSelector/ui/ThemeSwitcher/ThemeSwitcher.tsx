@@ -1,7 +1,7 @@
 import styles from './Theme.module.scss';
 import { Theme, useTheme } from 'app/providers/Theme/context';
 
-export const ThemeSelector = ()=> {
+export const ThemeSwitcher = ()=> {
   const themes = ['pink', 'blue', 'green', 'coffee', 'dark'];
   const {theme, setTheme} = useTheme()
 
