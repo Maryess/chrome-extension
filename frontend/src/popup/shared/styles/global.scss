@@ -48,3 +48,35 @@
   left: 0;
   z-index: 9999;
 }
+
+.distance-popup {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 9999;
+  background-color: var(--primary);
+  color: var(--text-border);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  width: 220px;
+  font-size: 14px;
+  font-family: sans-serif;
+
+  h3 {
+    margin: 0 0 0.5rem;
+    font-size: 16px;
+    border-bottom: 1px var(--text-border) solid;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    li {
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+  }
+}

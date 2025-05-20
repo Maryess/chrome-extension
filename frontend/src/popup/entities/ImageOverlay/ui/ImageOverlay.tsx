@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { ImageOverlayStorage } from "../lib/ImageOverlayStorage";
 import { ImageOverlayManager } from "../lib/ImageOverlayManager";
 import { getFromChromeStorage, onChangedChromeStorage } from "shared/lib/helpers/chromeStorage";
 import { IImage } from "shared/types/image";
+import { useImageOverlayStorage } from "../lib/useImageOverlayStorage";
 
 export const ImageOverlay = () => { 
-    const {getImageData,getOpacityData} = ImageOverlayStorage()
+    const {getImageData,getOpacityData} = useImageOverlayStorage()
     const [overlay] = useState(()=>new ImageOverlayManager())    
     
     useEffect(() => {
@@ -33,7 +33,6 @@ export const ImageOverlay = () => {
         })();
       }, []);
       
-    //подписка на изменение dragOpacity и selected image в chrome.storage
     useEffect(()=>{
         const unsubscribeDragOpacity = onChangedChromeStorage<{opacity:number}>('dragOpacity', (newValue)=>{
             if(newValue?.opacity){

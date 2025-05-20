@@ -5,19 +5,21 @@ const containerId = 'app';
 let container = document.getElementById(containerId);
 const image = document.querySelector('.image_container')
 
-const removeImage = () => {
+const removeBodyElement = () => {
   const image = document.querySelector('.image_container');
-  if (image) {
+  const distancePopup = document.querySelector('.distance-popup')
+  if (image && distancePopup) {
     image.remove();
-    console.log('Image removed');
+    distancePopup.remove()
+    console.log('Image amd popup removed');
   } else {
-    console.warn('No image to remove');
+    console.warn('No image and popup to remove');
   }
 };
 
 if (container) {
   container.remove();
-  removeImage()
+  removeBodyElement()
 } else {
   container = document.createElement('div');  
   container.className = 'my-extension-wrapper';
