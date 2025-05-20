@@ -8,13 +8,13 @@ const image = document.querySelector('.image_container')
 const removeBodyElement = () => {
   const image = document.querySelector('.image_container');
   const distancePopup = document.querySelector('.distance-popup')
+  const distanceLine = document.querySelector('.distance-line')
   if (image && distancePopup) {
     image.remove();
     distancePopup.remove()
-    console.log('Image amd popup removed');
-  } else {
-    console.warn('No image and popup to remove');
-  }
+    distanceLine?.remove()
+
+  } 
 };
 
 if (container) {

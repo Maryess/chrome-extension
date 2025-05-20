@@ -30,6 +30,7 @@ export const ImageUploader = () => {
                 opacity={opacityValue} 
                 imageUrl={imageValue} 
                 fileName={file?.name}/>
+
               </div>
             }
           </div>

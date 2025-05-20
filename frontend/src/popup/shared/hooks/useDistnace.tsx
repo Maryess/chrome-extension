@@ -1,17 +1,28 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const useDistance = () => {
-  const [firstClick, setFirstClick] = useState<{ x: number; y: number }>();
-  const [secondClick, setSecondClick] = useState<{ x: number; y: number }>();
+  const [firstClick, setFirstClick] = useState<{ x: number; y: number } | null>();
+  const [secondClick, setSecondClick] = useState<{ x: number; y: number } | null>();
+
+  const firstRef = useRef<{ x: number; y: number } | null>(null);
+  const secondRef = useRef<{ x: number; y: number } | null>(null);
 
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
+
+      const pos = { x: e.clientX, y: e.clientY };
       if (!firstClick) {
+        firstRef.current = pos;
         setFirstClick({ x: e.clientX, y: e.clientY });
       } else if (!secondClick) {
+        secondRef.current = pos;
         setSecondClick({ x: e.clientX, y: e.clientY });
+      }else{
+        firstRef.current = null;
+        secondRef.current = null;
+        setFirstClick(null)
+        setSecondClick(null)
       }
-      // если нужно сбрасывать и снова начинать — можно добавить else -> setFirstClick(null), setSecondClick(null)
     };
 
     window.addEventListener("click", handleClick);

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { DistanceOverlayManager } from "../lib/DIstanceOverlayManager"
+import { DistanceOverlayManager } from "../lib/DistanceOverlayManager"
 import { useImageOverlayStorage } from "entities/ImageOverlay"
 import { useMousePosition } from "shared/hooks/useMousePosition"
 import { useDistance } from "shared/hooks/useDistnace"

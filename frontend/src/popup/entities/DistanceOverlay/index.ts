@@ -1,3 +1,2 @@
-export {DistanceOverlayManager} from './lib/DIstanceOverlayManager';
-// export {ImageOverlayStorage} from './lib/;
+export {DistanceOverlayManager} from './lib/DistanceOverlayManager';
 export {DistanceOverlay} from './ui/DistanceOverlay';

@@ -1,4 +1,4 @@
-type IPosition = {
+export type IPosition = {
     x:number;
     y:number;
 } | null

@@ -80,3 +80,12 @@
     }
   }
 }
+
+.distance-line{
+  position: absolute;
+  height: 3px;
+  background-color: var(--primary);
+  z-index: 9999;
+  transform-origin: left center;
+  border-radius: 10px;
+}
