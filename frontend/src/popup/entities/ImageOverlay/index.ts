@@ -1,3 +1,3 @@
 export {ImageOverlayManager} from './lib/ImageOverlayManager';
-export {ImageOverlayStorage} from './lib/ImageOverlayStorage';
+export {useImageOverlayStorage} from './lib/useImageOverlayStorage';
 export {ImageOverlay} from './ui/ImageOverlay';
