@@ -85,7 +85,7 @@
   position: absolute;
   height: 4px;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 99999;
   transform-origin: 0 0;
   transition: transform 0.2s ease-out, width 0.2s ease-out;
   background-color: var(--primary);
