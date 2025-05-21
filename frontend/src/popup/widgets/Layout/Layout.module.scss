@@ -18,7 +18,16 @@
       
         span{
             text-transform: none;
-            color: var(--logo-accent);
+            color: var(--primary);
+        }
+
+        .letter {
+            display: inline-block;
+            color: var(--primary);
+            -webkit-text-stroke: 0.6px var(--text-border);  
+            &:last-child{
+                margin-right: 6px;
+            }
         }
     }
     .nav{

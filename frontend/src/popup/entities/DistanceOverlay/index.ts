@@ -1,2 +1,2 @@
 export {DistanceOverlay} from './ui/DistanceOverlay';
-export {DistanceOverlayManager} from './lib/DIstanceOverlayManager'
+export {DistanceOverlayManager} from './lib/DistanceOverlayManager'
