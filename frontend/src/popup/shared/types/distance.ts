@@ -1,7 +1,7 @@
 export type IPosition = {
     x:number;
     y:number;
-} | null
+}
 
 export interface IDistancePopup {
     px:number ;

@@ -10,7 +10,7 @@ type Props = {
 export const ImagePreview = ({imageUrl, opacity, fileName}:Props) => {
     return (
         <div className={styles.images}>
-            <Heading title="images"/>
+            <Heading title="preview"/>
             <div className={styles.preview}>
                 <img src={imageUrl} style={{ opacity:opacity,transition:'opacity 0.3s ease' }} alt={fileName} />
             </div>

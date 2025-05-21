@@ -1,7 +1,4 @@
-type IPosition = {
-    x:number;
-    y:number;
-} | null
+import { IPosition } from "shared/types/distance";
 
 export interface IDistancePopup {
     px:number ;
@@ -14,3 +11,4 @@ export interface IDistancePopup {
     isDragging?:boolean;
     isVisible?:boolean;
 }
+

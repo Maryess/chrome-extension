@@ -1,8 +1,9 @@
-import { ImageControlPanel, UploadImage, useUploadImages } from 'features/ImageUpload';
+import { ImagePanelSettings, UploadImage, useUploadImages } from 'features/ImageUpload';
 // import styles from './ImageUploader.module.scss'
 import { DragOpacity, useDragOpacity } from 'features/DragControl';
 import { removeFromChromeStorage } from 'shared/lib/helpers/chromeStorage';
 import { ImagePreview } from 'entities/ImagePreview';
+import { DistanceInfo } from 'features/DistanceInfo';
 
 export const ImageUploader = () => {
     const {imageValue, uploadImage,setImageValue,file} = useUploadImages()
@@ -20,7 +21,7 @@ export const ImageUploader = () => {
                 positionBtn={positionValue} 
                 opacity={opacityValue} 
                 handleMouseDown={handleMouseDown}/>
-                <ImageControlPanel 
+                <ImagePanelSettings 
                 addImg={()=>uploadImage} 
                 removeImg={()=>{
                   removeFromChromeStorage('selected image')
@@ -30,7 +31,7 @@ export const ImageUploader = () => {
                 opacity={opacityValue} 
                 imageUrl={imageValue} 
                 fileName={file?.name}/>
-
+                <DistanceInfo/>
               </div>
             }
           </div>
