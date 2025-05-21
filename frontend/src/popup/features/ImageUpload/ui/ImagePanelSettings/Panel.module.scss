@@ -12,4 +12,10 @@
       font-size: 1.3rem;
       cursor: pointer;
     }
-  }
+}
+
+.info{
+  @include border-form(1px, var(--text-border),dashed,var(--radius));
+  display: flex;
+  flex-direction: column;
+}

@@ -3,17 +3,18 @@ import 'styles/global.scss';
 
 const containerId = 'app';
 let container = document.getElementById(containerId);
-const image = document.querySelector('.image_container')
 
 const removeBodyElement = () => {
   const image = document.querySelector('.image_container');
   const distancePopup = document.querySelector('.distance-popup')
   const distanceLine = document.querySelector('.distance-line')
-  if (image && distancePopup) {
-    image.remove();
+  if (image && distancePopup && distanceLine) {
+    image.remove(); 
     distancePopup.remove()
+    distanceLine.remove()
+  }else{
+    image?.remove()
     distanceLine?.remove()
-
   } 
 };
 

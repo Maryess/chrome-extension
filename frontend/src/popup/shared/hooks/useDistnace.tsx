@@ -1,27 +1,26 @@
 import { useEffect, useRef, useState } from "react";
+import { IPosition } from "shared/types/distance";
 
 export const useDistance = () => {
-  const [firstClick, setFirstClick] = useState<{ x: number; y: number } | null>();
-  const [secondClick, setSecondClick] = useState<{ x: number; y: number } | null>();
+  const [firstClick, setFirstClick] = useState<IPosition>();
+  const [secondClick, setSecondClick] = useState<IPosition>();
 
   const firstRef = useRef<{ x: number; y: number } | null>(null);
   const secondRef = useRef<{ x: number; y: number } | null>(null);
 
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
+      if (!e.altKey) return; 
 
       const pos = { x: e.clientX, y: e.clientY };
+
       if (!firstClick) {
-        firstRef.current = pos;
-        setFirstClick({ x: e.clientX, y: e.clientY });
+        setFirstClick(pos);
       } else if (!secondClick) {
-        secondRef.current = pos;
-        setSecondClick({ x: e.clientX, y: e.clientY });
-      }else{
-        firstRef.current = null;
-        secondRef.current = null;
-        setFirstClick(null)
-        setSecondClick(null)
+        setSecondClick(pos);
+      } else {
+        setFirstClick(undefined);
+        setSecondClick(undefined);
       }
     };
 

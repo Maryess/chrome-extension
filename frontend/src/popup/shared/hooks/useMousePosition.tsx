@@ -31,6 +31,8 @@ export const useMousePosition = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
 
+  
+
   return {
     position,
     actualPosition

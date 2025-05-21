@@ -27,7 +27,6 @@ export const initDraggable = (element: HTMLElement) => {
     element.addEventListener('mousedown', handleMouseDown);
   
     return () => {
-      // возвращаем функцию для очистки
       element.removeEventListener('mousedown', handleMouseDown);
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);

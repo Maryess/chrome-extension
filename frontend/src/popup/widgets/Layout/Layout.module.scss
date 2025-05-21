@@ -8,12 +8,17 @@
     .logo{
         @include size(100%,3rem);
         @include center;
-        background-color: var(--primary);
-        color:var(--text-border);
-        border-radius: 10px;
-        transition: background-color ease-in-out 0.3s;
-        img{
-            width: 100%;
+        color: var(--text-border);
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: background 0.3s ease, transform 0.2s ease;
+      
+        span{
+            text-transform: none;
+            color: var(--logo-accent);
         }
     }
     .nav{

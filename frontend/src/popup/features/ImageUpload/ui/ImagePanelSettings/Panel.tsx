@@ -12,7 +12,7 @@ export const Panel = ({addImg, removeImg}:Props) => {
     return (
         <div className={styles.panel}>
             <FaRegTrashCan onClick={removeImg}/>
-            <FaRegSquarePlus onClick={()=> addImg}/>
+            <FaRegSquarePlus onClick={()=> addImg}/>      
         </div>
     )
 }
